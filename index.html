@@ -91,7 +91,24 @@
       });
 
       QUnit.test("first entry tests", function (assert) {
-        assert.ok(false);
+          var instance = Contact.Contacts.instance();
+          var iterator = instance.iterator();
+          var eramat = iterator.first();
+          assert.ok(eramat.firstName() === "Eric");
+          assert.ok(eramat.lastName() === "RAMAT");
+          var phones = ["0616642258", "0321465676"];
+          var mails = ["ramat@lisic.univ-littoral.fr", "eric.ramat@gmail.com"];
+          var tags = ["prof"]
+          for (var i in eramat.phones()){
+              assert.ok(phones.indexOf(eramat.phones()[i].number()) > -1);
+          }
+          for (var i in eramat.mails()){
+              assert.ok(mails.indexOf(eramat.mails()[i].address()) > -1);
+          }
+          for (var i in eramat.tags()){
+              console.log(eramat.tags()[i]);
+              assert.ok(tags.indexOf(eramat.tags()[i]) > -1);
+          }
       });
 
       QUnit.test("remove contact tests", function (assert) {
