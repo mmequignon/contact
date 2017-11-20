@@ -64,7 +64,11 @@
     <!-- BEGIN - Les tests -->
     <script>
       QUnit.test("header tests", function (assert) {
-        assert.ok(false);
+         var header = $("#contacts > table > tbody > tr:not([id]) > th");
+         var colums = ["First name", "Last name", "Phones", "Mails", "Tags", "Actions"];
+         for (var i = 0; i < header.length; i++){
+             assert.ok(header[i].innerHTML === colums[i]);
+         }
       });
 
       QUnit.test("list tests", function (assert) {
