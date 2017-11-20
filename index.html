@@ -122,7 +122,26 @@
       });
 
       QUnit.test("sort contact tests", function (assert) {
-        assert.ok(false);
+         var sorted = true;
+         var contacts;
+         contacts = $("td#cellLastName");
+         for (var i = 1; i < contacts.length ;  i ++ ){
+             if (contacts[i-1].innerHTML > contacts[i].innerHTML){
+                 sorted = false;
+                 break;
+             }
+         }
+         assert.ok(!sorted);
+         $('#button_sort').click();
+         sorted = true;
+         contacts = $("td#cellLastName");
+         for (var i = 1; i < contacts.length ;  i ++ ){
+             if (contacts[i-1].innerHTML > contacts[i].innerHTML){
+                 sorted = false;
+                 break;
+             }
+         }
+         assert.ok(sorted);
       });
     </script>
     <!-- END - Les tests -->
