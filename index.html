@@ -106,13 +106,19 @@
               assert.ok(mails.indexOf(eramat.mails()[i].address()) > -1);
           }
           for (var i in eramat.tags()){
-              console.log(eramat.tags()[i]);
               assert.ok(tags.indexOf(eramat.tags()[i]) > -1);
           }
       });
 
       QUnit.test("remove contact tests", function (assert) {
-        assert.ok(false);
+         var instance = Contact.Contacts.instance();
+         var iterator = instance.iterator();
+         var eramat = iterator.first();
+         var button_id = "#button_" + eramat.id();
+         $(button_id).click();
+         eramat = iterator.first();
+         assert.ok(eramat === undefined);
+         assert.ok($(button_id).length === 0);
       });
 
       QUnit.test("sort contact tests", function (assert) {
